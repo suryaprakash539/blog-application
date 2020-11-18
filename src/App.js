@@ -35,9 +35,17 @@ const App = () => {
   return (
     <Router>
       <div>
-        <h1>Blog Application</h1>
-        <Link to="/authors">authors</Link>
-        <Link to="/posts">Posts</Link>
+        <header className="main-head">
+          <h1>Blog Application</h1>
+          <nav>
+            <Link style={{ textDecoration: "none" }} to="/authors">
+              <p>authors</p>
+            </Link>
+            <Link style={{ textDecoration: "none" }} to="/posts">
+              <p>posts</p>
+            </Link>
+          </nav>
+        </header>
         <Switch>
           <Route path="/authors/:id">
             <AuthorShow />

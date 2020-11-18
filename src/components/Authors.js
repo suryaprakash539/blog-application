@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 const AuthorList = ({ author }) => {
   // console.log(author);
   return (
-    <div>
-      <Link to={`/authors/${author.id}`}>{author.name}</Link>
+    <div className="author-name">
+      <Link style={{ textDecoration: "none" }} to={`/authors/${author.id}`}>
+        <p>{author.name}</p>
+      </Link>
     </div>
   );
 };

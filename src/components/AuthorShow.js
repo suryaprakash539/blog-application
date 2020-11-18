@@ -34,19 +34,29 @@ const AuthorShow = () => {
     <div>
       {author ? (
         <div>
-          <h1>Name- {author.name}</h1>
-          <h2>Email- {author.email}</h2>
-          <h3>
-            Address- {author.address.street},{author.address.city}
-          </h3>
-          <h1>Listing posts written</h1>
-          <ul>
-            {postsToDisplay.map((post) => (
-              <Link key={post.body} to={`/posts/${post.id}`}>
-                <li>{post.title}</li>
-              </Link>
-            ))}
-          </ul>
+          <div className="author-show">
+            <h1>Name- {author.name}</h1>
+            <h2>Email- {author.email}</h2>
+            <h3>
+              Address- {author.address.street},{author.address.city}
+            </h3>
+          </div>
+          <div className="post-show">
+            <h3>Listing posts written</h3>
+            <ul className="post-list">
+              {postsToDisplay.map((post) => (
+                <Link
+                  style={{ textDecoration: "none" }}
+                  key={post.body}
+                  to={`/posts/${post.id}`}
+                >
+                  <li>
+                    <p>{post.title}</p>
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          </div>
         </div>
       ) : (
         <div></div>

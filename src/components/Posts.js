@@ -33,23 +33,28 @@ const Posts = () => {
   return (
     <div>
       {posts ? (
-        <div>
+        <div class="mainpost-list">
           <h1>Listing Posts-{posts.length}</h1>
           {currentPosts.map((post) => {
             return (
-              <Link key={post.id} to={`/posts/${post.id}`}>
-                <h1>Title - {post.title}</h1>
+              <Link
+                style={{ textDecoration: "none" }}
+                key={post.id}
+                to={`/posts/${post.id}`}
+              >
+                <h3>Title-{post.title}</h3>
               </Link>
             );
           })}
-
-          {pageNumbers.map((number) => {
-            return (
-              <button key={number} id={number} onClick={handleClick}>
-                {number}
-              </button>
-            );
-          })}
+          <div class="number-button">
+            {pageNumbers.map((number) => {
+              return (
+                <button key={number} id={number} onClick={handleClick}>
+                  {number}
+                </button>
+              );
+            })}
+          </div>
         </div>
       ) : (
         <div>

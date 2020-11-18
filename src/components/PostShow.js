@@ -32,18 +32,20 @@ const PostShow = () => {
   return (
     <div>
       {post ? (
-        <div>
+        <div class="mainpost-show">
           <h1>Post-{post.id}</h1>
           <h2>
             Title- {post.title}
             <br />
             Body- {post.body}
           </h2>
-          <h3>Comments</h3>
+          <h3 id="comments">Comments</h3>
           {commentsToDisplay.map((comment) => {
             return <CommentShow key={comment.id} comment={comment} />;
           })}
-          <Link to="/posts">Back</Link>
+          <Link to="/posts">
+            <p>Back</p>
+          </Link>
         </div>
       ) : (
         <h1>Loading....</h1>
