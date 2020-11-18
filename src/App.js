@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import Authors from "./components/Authors";
 import AuthorShow from "./components/AuthorShow";
 import Posts from "./components/Posts";
+import PostShow from "./components/PostShow";
 
 const App = () => {
   return (
@@ -16,6 +17,9 @@ const App = () => {
           </Route>
           <Route path="/authors">
             <Authors />
+          </Route>
+          <Route path="/posts/:id">
+            <PostShow />
           </Route>
           <Route path="/posts">
             <Posts />
