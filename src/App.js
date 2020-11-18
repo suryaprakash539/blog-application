@@ -8,11 +8,13 @@ import Posts from "./components/Posts";
 import PostShow from "./components/PostShow";
 
 import { initializeAuthors } from "./reducers/authorReducer";
+import { initializeComments } from "./reducers/commentReducer";
 import { initializePosts } from "./reducers/postReducer";
 
 const App = () => {
   // const posts = useSelector((state) => state.posts);
   // const authors = useSelector((state) => state.authors);
+  //const comments = useSelector((state) => state.comments);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,6 +26,11 @@ const App = () => {
     dispatch(initializeAuthors());
   }, [dispatch]);
   //console.log(authors);
+
+  useEffect(() => {
+    dispatch(initializeComments());
+  }, [dispatch]);
+  // console.log(comments);
 
   return (
     <Router>

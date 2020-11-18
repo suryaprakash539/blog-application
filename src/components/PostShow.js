@@ -3,11 +3,24 @@
 import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 
+const CommentShow = ({ comment }) => {
+  return (
+    <div>
+      <p>{comment.body}</p>
+    </div>
+  );
+};
+
 const PostShow = () => {
   // const [post, setPost] = useState("");
   const posts = useSelector((state) => state.posts);
+  const comments = useSelector((state) => state.comments);
   const id = Number(useParams().id);
   const post = posts.find((post) => post.id === id);
+  const commentsToDisplay = comments.filter(
+    (comment) => comment.postId === post.id
+  );
+  console.log(commentsToDisplay);
   // useEffect(() => {
   //   axios
   //     .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
@@ -26,6 +39,10 @@ const PostShow = () => {
             <br />
             Body- {post.body}
           </h2>
+          <h3>Comments</h3>
+          {commentsToDisplay.map((comment) => {
+            return <CommentShow key={comment.id} comment={comment} />;
+          })}
           <Link to="/posts">Back</Link>
         </div>
       ) : (
