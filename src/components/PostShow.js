@@ -20,7 +20,7 @@ const PostShow = () => {
   const commentsToDisplay = comments.filter(
     (comment) => comment.postId === post.id
   );
-  console.log(commentsToDisplay);
+
   // useEffect(() => {
   //   axios
   //     .get(`https://jsonplaceholder.typicode.com/posts/${id}`)

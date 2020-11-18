@@ -1,4 +1,4 @@
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 // import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -10,19 +10,46 @@ const Posts = () => {
   //     setPosts(response.data);
   //   });
   // }, []);
+
   const posts = useSelector((state) => state.posts);
-  //console.log(posts);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  const postsPerPage = 10;
+  const currentPage = pageNumber;
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(posts.length / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
+  const handleClick = (event) => {
+    //console.log(event.target.id);
+    setPageNumber(event.target.id);
+  };
+
   return (
     <div>
       {posts ? (
         <div>
           <h1>Listing Posts-{posts.length}</h1>
+          {currentPosts.map((post) => {
+            return (
+              <Link key={post.id} to={`/posts/${post.id}`}>
+                <h1>Title - {post.title}</h1>
+              </Link>
+            );
+          })}
 
-          {posts.map((post) => (
-            <Link key={post.id} to={`/posts/${post.id}`}>
-              <h1>Title - {post.title}</h1>
-            </Link>
-          ))}
+          {pageNumbers.map((number) => {
+            return (
+              <button key={number} id={number} onClick={handleClick}>
+                {number}
+              </button>
+            );
+          })}
         </div>
       ) : (
         <div>
