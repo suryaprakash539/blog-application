@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const AuthorList = ({ author }) => {
-  console.log(author);
+  // console.log(author);
   return (
     <div>
       <Link to={`/authors/${author.id}`}>{author.name}</Link>
@@ -12,19 +11,20 @@ const AuthorList = ({ author }) => {
 };
 
 const Authors = () => {
-  const [authors, setAuthors] = useState([]);
-  useEffect(() => {
-    console.log("surya");
-    axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
-      setAuthors(response.data);
-    });
-  }, []);
+  const authors = useSelector((state) => state.authors);
+  // const [authors, setAuthors] = useState([]);
+  // useEffect(() => {
+  //   // console.log("surya");
+  //   axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
+  //     setAuthors(response.data);
+  //   });
+  // }, []);
   return (
     <div>
       <h1>Listing Authors - {authors.length}</h1>
       <ul>
         {authors.map((author) => (
-          <li>
+          <li key={author.id}>
             <AuthorList key={author.id} author={author} />
           </li>
         ))}

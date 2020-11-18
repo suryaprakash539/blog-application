@@ -1,8 +1,16 @@
+// import { useState, useEffect } from "react";
+// import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Posts = () => {
-  const posts = useSelector((state) => state);
+  // const [posts, setPosts] = useState([]);
+  // useEffect(() => {
+  //   axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
+  //     setPosts(response.data);
+  //   });
+  // }, []);
+  const posts = useSelector((state) => state.posts);
   //console.log(posts);
   return (
     <div>

@@ -5,7 +5,7 @@ import { useParams, Link } from "react-router-dom";
 
 const PostShow = () => {
   // const [post, setPost] = useState("");
-  const posts = useSelector((state) => state);
+  const posts = useSelector((state) => state.posts);
   const id = Number(useParams().id);
   const post = posts.find((post) => post.id === id);
   // useEffect(() => {
