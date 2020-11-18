@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 const AuthorShow = () => {
@@ -35,7 +35,9 @@ const AuthorShow = () => {
           <h1>Listing posts written</h1>
           <ul>
             {posts.map((post) => (
-              <li>{post.title}</li>
+              <Link key={post.body} to={`/posts/${post.id}`}>
+                <li>{post.title}</li>
+              </Link>
             ))}
           </ul>
         </div>

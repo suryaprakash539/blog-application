@@ -1,17 +1,20 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+// import {useEffect,useState} from 'react'
+// import axios from 'axios'
+import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 
 const PostShow = () => {
-  const [post, setPost] = useState("");
+  // const [post, setPost] = useState("");
+  const posts = useSelector((state) => state);
   const id = Number(useParams().id);
-  useEffect(() => {
-    axios
-      .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .then((response) => {
-        setPost(response.data);
-      });
-  }, [id]);
+  const post = posts.find((post) => post.id === id);
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+  //     .then((response) => {
+  //       setPost(response.data);
+  //     });
+  // }, [id]);
 
   return (
     <div>

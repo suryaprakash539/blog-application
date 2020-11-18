@@ -1,10 +1,22 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import Authors from "./components/Authors";
 import AuthorShow from "./components/AuthorShow";
 import Posts from "./components/Posts";
 import PostShow from "./components/PostShow";
 
+import { initializePosts } from "./reducers/postReducer";
+
 const App = () => {
+  const posts = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initializePosts());
+  }, [dispatch]);
+  console.log(posts, "posts");
+
   return (
     <Router>
       <div>
