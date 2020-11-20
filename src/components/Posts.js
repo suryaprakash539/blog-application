@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 // import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Pagination from "react-bootstrap/Pagination";
+import ListGroup from "react-bootstrap/ListGroup";
 
 const Posts = () => {
   // const [posts, setPosts] = useState([]);
@@ -14,46 +16,56 @@ const Posts = () => {
   const posts = useSelector((state) => state.posts);
   const [pageNumber, setPageNumber] = useState(1);
 
+  const handleClick = (event) => {
+    setPageNumber(event.target.id);
+  };
+
   const postsPerPage = 10;
   const currentPage = pageNumber;
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(posts.length / postsPerPage); i++) {
-    pageNumbers.push(i);
-  }
+  let active = pageNumber;
+  let items = [];
 
-  const handleClick = (event) => {
-    //console.log(event.target.id);
-    setPageNumber(event.target.id);
-  };
+  for (
+    let number = 1;
+    number <= Math.ceil(posts.length / postsPerPage);
+    number++
+  ) {
+    items.push(
+      <Pagination.Item
+        active={active === number}
+        key={number}
+        id={number}
+        onClick={handleClick}
+      >
+        {number}
+      </Pagination.Item>
+    );
+  }
 
   return (
     <div>
       {posts ? (
         <div class="mainpost-list">
           <h1>Listing Posts-{posts.length}</h1>
-          {currentPosts.map((post) => {
-            return (
-              <Link
-                style={{ textDecoration: "none" }}
-                key={post.id}
-                to={`/posts/${post.id}`}
-              >
-                <h3>Title-{post.title}</h3>
-              </Link>
-            );
-          })}
-          <div class="number-button">
-            {pageNumbers.map((number) => {
+
+          <ListGroup>
+            {currentPosts.map((post) => {
               return (
-                <button key={number} id={number} onClick={handleClick}>
-                  {number}
-                </button>
+                <Link key={post.id} to={`/posts/${post.id}`}>
+                  <ListGroup.Item variant="warning">
+                    <h6>Title - {post.title}</h6>
+                  </ListGroup.Item>
+                </Link>
               );
             })}
+          </ListGroup>
+          <div class="page-bar">
+            <Pagination>{items}</Pagination>
+
           </div>
         </div>
       ) : (
