@@ -35,6 +35,7 @@ const AuthorShow = () => {
   return (
     <div>
       {author ? (
+
         <div class="author-card">
           <Card
             border="danger"
@@ -64,6 +65,7 @@ const AuthorShow = () => {
                 </Link>
               ))}
             </ListGroup>
+
           </div>
         </div>
       ) : (

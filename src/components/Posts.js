@@ -51,6 +51,7 @@ const Posts = () => {
       {posts ? (
         <div class="mainpost-list">
           <h1>Listing Posts-{posts.length}</h1>
+
           <ListGroup>
             {currentPosts.map((post) => {
               return (
@@ -64,6 +65,7 @@ const Posts = () => {
           </ListGroup>
           <div class="page-bar">
             <Pagination>{items}</Pagination>
+
           </div>
         </div>
       ) : (

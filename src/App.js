@@ -36,6 +36,7 @@ const App = () => {
   return (
     <Router>
       <div>
+
         <header>
           <Nav as="ul">
             <Nav.Item as="li">
@@ -54,6 +55,7 @@ const App = () => {
         {/* <h1></h1>
         <Link to="/authors">authors</Link>
         <Link to="/posts">posts</Link> */}
+
 
         <Switch>
           <Route path="/authors/:id">
