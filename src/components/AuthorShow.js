@@ -2,6 +2,8 @@
 // import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
 
 const AuthorShow = () => {
   // const [author, setAuthor] = useState("");
@@ -33,20 +35,36 @@ const AuthorShow = () => {
   return (
     <div>
       {author ? (
-        <div>
-          <h1>Name- {author.name}</h1>
-          <h2>Email- {author.email}</h2>
-          <h3>
-            Address- {author.address.street},{author.address.city}
-          </h3>
-          <h1>Listing posts written</h1>
-          <ul>
-            {postsToDisplay.map((post) => (
-              <Link key={post.body} to={`/posts/${post.id}`}>
-                <li>{post.title}</li>
-              </Link>
-            ))}
-          </ul>
+        <div class="author-card">
+          <Card
+            border="danger"
+            bg="dark"
+            style={{ width: "25rem" }}
+            className="mb-2"
+          >
+            <Card.Header>
+              {" "}
+              Name-<h2>{author.name}</h2>
+            </Card.Header>
+            <Card.Body>
+              <Card.Title>Email- {author.email} </Card.Title>
+              <Card.Text>
+                Address- {author.address.street},{author.address.city}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+          <div class="post-list">
+            <h2>Listing posts written</h2>
+            <ListGroup>
+              {postsToDisplay.map((post) => (
+                <Link key={post.body} to={`/posts/${post.id}`}>
+                  <ListGroup.Item variant="warning">
+                    {post.title}
+                  </ListGroup.Item>
+                </Link>
+              ))}
+            </ListGroup>
+          </div>
         </div>
       ) : (
         <div></div>

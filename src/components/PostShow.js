@@ -2,6 +2,8 @@
 // import axios from 'axios'
 import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
 
 const CommentShow = ({ comment }) => {
   return (
@@ -32,18 +34,30 @@ const PostShow = () => {
   return (
     <div>
       {post ? (
-        <div>
-          <h1>Post-{post.id}</h1>
-          <h2>
-            Title- {post.title}
-            <br />
-            Body- {post.body}
-          </h2>
-          <h3>Comments</h3>
-          {commentsToDisplay.map((comment) => {
-            return <CommentShow key={comment.id} comment={comment} />;
-          })}
-          <Link to="/posts">Back</Link>
+        <div className="comments">
+          <Card border="success" style={{ width: "25rem" }} className="mb-2">
+            <Card.Header>
+              {" "}
+              <h2>Post-{post.id}</h2>
+            </Card.Header>
+            <Card.Body>
+              <Card.Title> Title- {post.title} </Card.Title>
+              <Card.Text>Body- {post.body}</Card.Text>
+            </Card.Body>
+          </Card>
+          <div class="comment-list">
+            <h3>Comments on Post</h3>
+            <ListGroup>
+              {commentsToDisplay.map((comment) => {
+                return (
+                  <ListGroup.Item variant="warning">
+                    <CommentShow key={comment.id} comment={comment} />
+                  </ListGroup.Item>
+                );
+              })}
+            </ListGroup>
+            <Link to="/posts">Back</Link>
+          </div>
         </div>
       ) : (
         <h1>Loading....</h1>

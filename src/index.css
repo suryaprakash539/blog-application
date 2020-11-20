@@ -1,13 +1,77 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: "Pattaya", sans-serif;
+}
+
+header {
+  background: black;
+  min-height: 5vh;
+  text-align: center;
+}
+
+#logo {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.author-list {
+  text-align: center;
+  width: 50%;
+  margin: auto;
+}
+
+.author-card {
+  color: white;
+  margin: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.post-list h2 {
+  color: black;
+}
+
+.post-list {
+  width: 50%;
+  margin: auto;
+}
+
+.post-list h1 {
+  text-align: center;
+}
+
+.mainpost-list h1 {
+  text-align: center;
+}
+.mainpost-list {
+  width: 40%;
+  margin: auto;
+}
+
+.page-bar {
+  margin-top: 1rem;
+}
+
+.comments {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comments h3 {
+  text-align: center;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
 }

@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import ListGroup from "react-bootstrap/ListGroup";
 
 const AuthorList = ({ author }) => {
   // console.log(author);
   return (
-    <div>
+    <div class="author">
       <Link to={`/authors/${author.id}`}>{author.name}</Link>
     </div>
   );
@@ -20,15 +21,16 @@ const Authors = () => {
   //   });
   // }, []);
   return (
-    <div>
+    <div class="author-list">
       <h1>Listing Authors - {authors.length}</h1>
-      <ul>
+      <ListGroup>
         {authors.map((author) => (
-          <li key={author.id}>
+          <ListGroup.Item key={author.id} variant="warning">
             <AuthorList key={author.id} author={author} />
-          </li>
+            {/* <Link to={`/authors/${author.id}`}>{author.name}</Link> */}
+          </ListGroup.Item>
         ))}
-      </ul>
+      </ListGroup>
     </div>
   );
 };

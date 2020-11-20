@@ -10,34 +10,51 @@ import PostShow from "./components/PostShow";
 import { initializeAuthors } from "./reducers/authorReducer";
 import { initializeComments } from "./reducers/commentReducer";
 import { initializePosts } from "./reducers/postReducer";
+import Nav from "react-bootstrap/Nav";
 
 const App = () => {
-  // const posts = useSelector((state) => state.posts);
-  // const authors = useSelector((state) => state.authors);
-  //const comments = useSelector((state) => state.comments);
+  const posts = useSelector((state) => state.posts);
+  const authors = useSelector((state) => state.authors);
+  const comments = useSelector((state) => state.comments);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initializePosts());
+    if (posts.length === 0) dispatch(initializePosts());
   }, [dispatch]);
   // console.log(posts, "posts");
 
   useEffect(() => {
-    dispatch(initializeAuthors());
+    if (authors.length === 0) dispatch(initializeAuthors());
   }, [dispatch]);
   //console.log(authors);
 
   useEffect(() => {
-    dispatch(initializeComments());
+    if (comments.length === 0) dispatch(initializeComments());
   }, [dispatch]);
   // console.log(comments);
 
   return (
     <Router>
       <div>
-        <h1>Blog Application</h1>
+        <header>
+          <Nav as="ul">
+            <Nav.Item as="li">
+              <Nav.Link id="logo" href="/">
+                Blog Application
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item as="li">
+              <Nav.Link href="/authors">authors</Nav.Link>
+            </Nav.Item>
+            <Nav.Item as="li">
+              <Nav.Link href="/posts">posts</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </header>
+        {/* <h1></h1>
         <Link to="/authors">authors</Link>
-        <Link to="/posts">Posts</Link>
+        <Link to="/posts">posts</Link> */}
+
         <Switch>
           <Route path="/authors/:id">
             <AuthorShow />
