@@ -34,6 +34,7 @@ const PostShow = () => {
   return (
     <div>
       {post ? (
+
         <div className="comments">
           <Card border="success" style={{ width: "25rem" }} className="mb-2">
             <Card.Header>
@@ -58,6 +59,7 @@ const PostShow = () => {
             </ListGroup>
             <Link to="/posts">Back</Link>
           </div>
+
         </div>
       ) : (
         <h1>Loading....</h1>

@@ -37,6 +37,7 @@ const App = () => {
   return (
     <Router>
       <div>
+
         <header>
           <Navbar bg="dark" variant="dark">
             <Nav className="container-fluid">
@@ -61,6 +62,7 @@ const App = () => {
         {/* <h1></h1>
         <Link to="/authors">authors</Link>
         <Link to="/posts">posts</Link> */}
+
 
         <Switch>
           <Route path="/authors/:id">
