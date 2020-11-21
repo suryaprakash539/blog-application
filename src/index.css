@@ -5,7 +5,11 @@
 }
 
 body {
-  font-family: "Pattaya", sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+Nav.Link {
+  font-size: 1.5rem;
 }
 
 header {
@@ -14,15 +18,8 @@ header {
   text-align: center;
 }
 
-#logo {
-  font-size: 1.5rem;
-  color: white;
-}
-
 .author-list {
   text-align: center;
-  width: 50%;
-  margin: auto;
 }
 
 .author-card {

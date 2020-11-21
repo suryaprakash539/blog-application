@@ -45,13 +45,13 @@ const PostShow = () => {
               <Card.Text>Body- {post.body}</Card.Text>
             </Card.Body>
           </Card>
-          <div class="comment-list">
+          <div className="comment-list">
             <h3>Comments on Post</h3>
             <ListGroup>
               {commentsToDisplay.map((comment) => {
                 return (
-                  <ListGroup.Item variant="warning">
-                    <CommentShow key={comment.id} comment={comment} />
+                  <ListGroup.Item key={comment.id} variant="warning">
+                    <CommentShow comment={comment} />
                   </ListGroup.Item>
                 );
               })}

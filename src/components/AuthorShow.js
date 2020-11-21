@@ -35,7 +35,7 @@ const AuthorShow = () => {
   return (
     <div>
       {author ? (
-        <div class="author-card">
+        <div className="author-card">
           <Card
             border="danger"
             bg="dark"
@@ -53,7 +53,7 @@ const AuthorShow = () => {
               </Card.Text>
             </Card.Body>
           </Card>
-          <div class="post-list">
+          <div className="post-list">
             <h2>Listing posts written</h2>
             <ListGroup>
               {postsToDisplay.map((post) => (

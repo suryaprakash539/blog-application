@@ -10,6 +10,7 @@ import PostShow from "./components/PostShow";
 import { initializeAuthors } from "./reducers/authorReducer";
 import { initializeComments } from "./reducers/commentReducer";
 import { initializePosts } from "./reducers/postReducer";
+import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
 const App = () => {
@@ -37,19 +38,25 @@ const App = () => {
     <Router>
       <div>
         <header>
-          <Nav as="ul">
-            <Nav.Item as="li">
-              <Nav.Link id="logo" href="/">
-                Blog Application
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item as="li">
-              <Nav.Link href="/authors">authors</Nav.Link>
-            </Nav.Item>
-            <Nav.Item as="li">
-              <Nav.Link href="/posts">posts</Nav.Link>
-            </Nav.Item>
-          </Nav>
+          <Navbar bg="dark" variant="dark">
+            <Nav className="container-fluid">
+              <Nav.Item>
+                <Navbar.Brand as={Link} to="/">
+                  Blog Application
+                </Navbar.Brand>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link as={Link} to="/authors">
+                  authors
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link as={Link} to="/posts">
+                  posts
+                </Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </Navbar>
         </header>
         {/* <h1></h1>
         <Link to="/authors">authors</Link>
