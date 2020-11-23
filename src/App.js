@@ -37,7 +37,6 @@ const App = () => {
   return (
     <Router>
       <div>
-
         <header>
           <Navbar bg="dark" variant="dark">
             <Nav className="container-fluid">
@@ -63,7 +62,8 @@ const App = () => {
         <Link to="/authors">authors</Link>
         <Link to="/posts">posts</Link> */}
 
-
+        <h1>Welcome to Blog Application</h1>
+        <h3>Please view the authors and posts section</h3>
         <Switch>
           <Route path="/authors/:id">
             <AuthorShow />
