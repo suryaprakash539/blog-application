@@ -8,6 +8,15 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.welcome {
+  text-align: center;
+}
+
+.welcome h1 {
+  font-family: "Pattaya", "sans-serif";
+  margin: 2rem;
+}
+
 Nav.Link {
   font-size: 1.5rem;
 }
@@ -71,4 +80,5 @@ header {
   align-items: center;
   justify-content: center;
   margin-left: 1rem;
+  width: 50%;
 }

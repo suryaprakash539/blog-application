@@ -6,6 +6,7 @@ import Authors from "./components/Authors";
 import AuthorShow from "./components/AuthorShow";
 import Posts from "./components/Posts";
 import PostShow from "./components/PostShow";
+import Welcome from "./components/Welcome";
 
 import { initializeAuthors } from "./reducers/authorReducer";
 import { initializeComments } from "./reducers/commentReducer";
@@ -21,17 +22,17 @@ const App = () => {
 
   useEffect(() => {
     if (posts.length === 0) dispatch(initializePosts());
-  }, [dispatch]);
+  }, [dispatch, posts]);
   // console.log(posts, "posts");
 
   useEffect(() => {
     if (authors.length === 0) dispatch(initializeAuthors());
-  }, [dispatch]);
+  }, [dispatch, authors]);
   //console.log(authors);
 
   useEffect(() => {
     if (comments.length === 0) dispatch(initializeComments());
-  }, [dispatch]);
+  }, [dispatch, comments]);
   // console.log(comments);
 
   return (
@@ -62,9 +63,10 @@ const App = () => {
         <Link to="/authors">authors</Link>
         <Link to="/posts">posts</Link> */}
 
-        <h1>Welcome to Blog Application</h1>
-        <h3>Please view the authors and posts section</h3>
         <Switch>
+          <Route exact path="/">
+            <Welcome />
+          </Route>
           <Route path="/authors/:id">
             <AuthorShow />
           </Route>
